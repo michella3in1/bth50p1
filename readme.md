@@ -1,4 +1,4 @@
-# informatio 
+#information
 
 - margin : jarak luar element
 - padding : jarak dalam element
