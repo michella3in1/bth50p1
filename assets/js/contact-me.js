@@ -16,8 +16,9 @@ function submitData() {
     a.click();
 }
 
-let btn = document.getElementById('btn-alert');
-btn.click();
+    let btn = document.getElementById('btn-alert');
+    btn.click();
+
 
 // function showAlert() {
 //     alert("Hello there");

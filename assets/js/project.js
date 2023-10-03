@@ -4,54 +4,80 @@ function addProject(event) {
     event.preventDefault()
 
     let title = document.getElementById("input-project-title").value
+    let startDate = document.getElementById("input-project-startDate").value
+    let endDate = document.getElementById("input-project-endDate").value
     let content = document.getElementById("input-project-content").value
-    let image = document.getElementById("input-project-image")
+    let image = document.getElementById("input-project-image").file
 
     image = URL.createObjectURL(image.files[0])
+    console.log(image);
 
-    let project = {
-        title,
-        content,
-        image,
-        postAt: "10 August 2023",
-        author: "Banana Musang King",
-    };
-
-    projects.push(project);
-    console.log(project);
-    renderProjects();
-}
-
-function renderProjects() {
-    console.log(projects);
-
-    let containerProject = document.getElementById("contents")
-
-    containerProject.innerHTML = ""
-
-    for (let i = 0; i < projects.length; i++) {
-        containerProject.innerHTML += `
-        <div class="project-list-item">
-            <div class="project-image">
-                <img src="${projects[i].image}" alt="" />
-            </div>
-            <div class="project-content">
-                <div class="btn-group">
-                    <button class="btn-edit">Edit Post</button>
-                    <button class="btn-post">Post Blog</button>
-                </div>
-                <h1>
-                    <a href="blog-detail.html" target="_blank">${projects[i].title}</a>
-                </h1>
-                <div class="detail-project-content">
-                    10 AUG 2022 | Banana Musang King
-                    ${projects[i].postAt} | ${projects[i].author}
-                </div>
-                <p>
-                    ${projects[i].content}
-                </p>
-            </div>
-        </div>
-        `;
+    let start = new Date(startDate);
+    let end = new Date(endDate);
+  
+    if (start > end) {
+      return alert("You Fill End Date Before Start Date");
     }
-}
+  
+    let difference = end.getTime() - start.getTime();
+    let days = difference / (1000 * 3600 * 24);
+    let weeks = Math.floor(days / 7);
+    let months = Math.floor(weeks / 4);
+    let years = Math.floor(months / 12);
+    let duration = "";
+  
+    if (days > 0) {
+      duration = days + "day";
+    }
+    if (weeks > 0) {
+      duration = weeks + "week";
+    }
+    if (months > 0) {
+      duration = months + "month";
+    }
+    if (years > 0) {
+      duration = years + " year";
+    }
+    let project = {
+      title,
+      duration,
+      content,
+      image,
+    };
+  
+    dataBlog.push(project);
+    console.log(dataProject);
+  
+    renderBlog();
+  }
+  
+  function renderBlog() {
+      document.getElementById("contents").innerHTML = "";
+      for (let index = 0; index < dataProject.length; index++) {
+          document.getElementById("contents").innerHTML += `
+                  <div class="container-card">
+                      <div class="card-content">
+                          <img src="${dataProject[index].image}" alt="picture">
+                          <h1>
+                              <a href="project-detail.html" target="_blank">
+                              ${dataBlog[index].title}
+                              </a>
+                          </h1>
+                          <p>durasi : ${dataProject[index].duration}</p>
+                          <div id="container-desc">
+                          ${dataProject[index].content}
+                          </div>
+                          <div>
+                            <i class="fa-brands fa-x-twitter"></i>
+                            <i class="fa-brands fa-twitch"></i>
+                            <i class="fa-brands fa-bitcoin"></i>
+                          </div>
+                          <div class="btn-group">
+                          <button class="btn-edit">Edit</button>
+                          <button class="btn-post">Delete</button>
+                          </div>
+                      </div>
+                  </div>
+          `
+      }
+  }
