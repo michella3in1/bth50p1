@@ -13,7 +13,7 @@
     margin-top: 30px;
     width: 100%;
   }
-  .testimoni {
+  .testimonials {
     width: 25%;
     margin: 0 15px 30px 15px;
     padding: 20px;
@@ -21,7 +21,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
   
-  .testimoni img {
+  .testimonials img {
     height: 200px;
     width: 100%;
     object-fit: cover;
@@ -39,6 +39,23 @@
     font-weight: bold;
     text-align: right;
   }
+
+  .container-rating {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .rating-btn {
+    margin: 20px;
+    padding: 0px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: orangered;
+    color: white;
+    cursor: pointer;
+  }
+  
 
   @media only screen and (max-width: 900px) {
     .testimoni {

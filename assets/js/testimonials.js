@@ -1,12 +1,3 @@
-// Step :
-// - making class
-// - making object
-// - called it so it appears in browser using loop and innerHTML
-// - refactor the code so it implements inheritance AuthorTestimonial
-// - refactor the code so it implement encapsulation, use getter and settet(the key point is : encapsulation make app more secure by implementing restriction)
-// - refactor the code so it implement polymorphism by making class CompanyTestimonial and override get author(the key point is : polymorphism implement and overriding)
-// - refactor the code so it implement abstraction by making get testimonialHTML and get author throw error when children didn't use it
-
 class Testimonial {
   #quote = "";
   #image = "";
@@ -24,12 +15,12 @@ class Testimonial {
     return this.#image;
   }
 
-  // This is an abstract method that subclasses will implement
+
   get author() {
     throw new Error("getAuthor() method must be implemented.");
   }
 
-  // This is a polymorphic method than can take any subclass of Testimonial
+
   get testimonialHTML() {
     return `
         <div class="testimonial">
@@ -70,34 +61,106 @@ class CompanyTestimonial extends Testimonial {
 }
 
 const testimonial1 = new AuthorTestimonial(
-  "Abel Dustin",
-  "Mantap sekali jasanya!",
-  "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+  "Hakase",
+  "Gepeng!",
+  "assets/images/gepeng.jpg"
 );
 
 const testimonial2 = new AuthorTestimonial(
-  "Cintara Surya",
-  "Keren lah pokoknya",
-  "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+  "Isigami",
+  "Mau jadi direktur atau NEET",
+  "assets/images/chill.png"
 );
 
-const testimonial3 = new AuthorTestimonial(
-  "Maul",
-  "Wuhu keren cuy!",
-  "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8bWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-);
+ const testimonial3 = new AuthorTestimonial(
+   "Monja",
+   "ituh cowok lo mon,even better!",
+   "assets/images/monja.png"
+ );
 
-const testimonial4 = new AuthorTestimonial(
-  "Rangga",
-  "Wuhu keren banget!",
-  "image/MepFIDem_400x400.jpg"
-);
+ const testimonial4 = new AuthorTestimonial(
+  "Mamang daya",
+  "Siap!",
+  "assets/images/Hormat.png"
+ );
 
-let testimonialData = [testimonial1, testimonial2, testimonial3, testimonial4];
-let testimonialHTML = "";
+//let testimonialData = [testimonial1, testimonial2, testimonial3, testimonial4];
+//let testimonialHTML = "";
 
-for (let i = 0; i < testimonialData.length; i++) {
-  testimonialHTML += testimonialData[i].testimonialHTML;
+//for (let i = 0; i < testimonialData.length; i++) {
+//  testimonialHTML += testimonialData[i].testimonialHTML;
+// }
+
+// document.getElementById("testimonials").innerHTML = testimonialHTML;
+
+
+const testimonialData = [
+  {
+    author: "Hakase",
+    quote: "Gepeng",
+    image: "assets/images/gepeng.jpg",
+    rating: 1,
+  },
+  {
+    author: "Isigami",
+    quote: "Mau jadi direktur atau NEET",
+    image: "assets/images/chill.png",
+    rating: 5,
+  },
+  {
+    author: "Monja",
+    quote: "ituh cowok lo mon,even better!",
+    image: "assets/images/monja.png",  
+    rating: 2,
+  },
+  {
+    author: "Mamang daya",
+    quote: "Siap!",
+    image: "assets/images/Hormat.png",
+    rating: 4,
+  },
+];
+
+function allTestimonials() {
+  let testimonialHTML = "";
+
+  testimonialData.forEach(function (item) {
+    testimonialHTML += `
+    <div class="testimonial">
+      <img src="${item.image}" class="profile-testimonial" />
+      <p class="quote">${item.quote}</p>
+      <p class="author">- ${item.author}</p>
+      <p class="author">${item.rating}<i class="fa-solid fa-star"></i></p>
+    </div>
+    `;
+  });
+
+  document.getElementById("testimonials").innerHTML = testimonialHTML;
 }
 
-document.getElementById("testimonials").innerHTML = testimonialHTML;
+allTestimonials();
+
+function filterTestimonials(rating) {
+  let testimonialHTML = "";
+
+  const testimonialFiltered = testimonialData.filter(function (item) {
+    return item.rating === rating;
+  });
+
+  if (testimonialFiltered.length === 0) {
+    testimonialHTML = `<h1>Data not found!</h1>`;
+  } else {
+    testimonialFiltered.forEach(function (item) {
+      testimonialHTML += `
+      <div class="testimonial">
+        <img src="${item.image}" class="profile-testimonial" />
+        <p class="quote">${item.quote}</p>
+        <p class="author">- ${item.author}</p>
+        <p class="author">${item.rating}<i class="fa-solid fa-star"></i></p>
+      </div>
+      `;
+    });
+  }
+
+  document.getElementById("testimonials").innerHTML = testimonialHTML;
+}
