@@ -51,7 +51,7 @@ function addProject(event) {
     renderBlog();
   }
   
-  function renderBlog() {
+  function renderProject() {
       document.getElementById("contents").innerHTML = "";
       for (let index = 0; index < dataProject.length; index++) {
           document.getElementById("contents").innerHTML += `

@@ -9,51 +9,66 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
     </head>
     <body>
-        <section class="header">
         <nav>
             <div class="left">
-                <a href="#">
+                <a href="index.html">
                     <img src="assets/images/logo.png">
                 </a>
                 <ul>
                     <li>
-                        <a class="active" href="index.html">Home</a>
+                        <a class="active" href="index.html" class="home item-collapse">Home</a>
                     </li>
                     <li>
-                        <a class="active" href="project.html">My Project</a>
+                        <a href="project.html" class="myproject item-collapse">My Project</a>
                     </li>
                 </ul>
             </div>
-            <!-- Pembatas -->
-            <div class="right">
+            <div class="right item-collapse">
                 <a href="contact-me.html">Contact Me</a>
             </div>
+
+            <div class="right" id="barsmenu">
+                <button
+                  style="background-color: transparent; border: none; cursor: pointer"
+                  onclick="openHamburger();">
+                  <i class="fa-solid fa-bars"></i>
+                </button>
+              </div>
         </nav>
-        <div class="division">
+        <div class="hamburger-nav-container" id="hamburger-nav-container">
+            <a href="index.html" class="hamburger-active">Home</a>
+            <a href="project.html">My Project</a>
+            <a href="contact-me.html">Contact</a>
+          </div>
+
+        <!-- Pembatas -->
+       
+<div class="division">
+    <section>
             <div class="first-container">
-                <h1>BIODATA</h1>
+                <p id="hi">BIODATA</p>
                 <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nesciunt vitae officia cumque possimus, aliquam dolor veniam error velit exercitationem, aperiam sed eum nemo natus? Saepe cumque nostrum modi accusamus magnam?</p>
-                <div id="contdown">
-                    <a href="https://subsplease.org/" class="contact-btn">Contact</a>
-                    <div class="download"><a href="#"><h3>Download CV<i class="fas fa-lg fa-download"></i></h3></a></div>
-                </div>
+                <div>
+                    <button>
+                        Contact
+                    </button>
+                    <a id="downloadcv">Download CV<i class="fas fa-lg fa-download"></i></a>
+                </div> 
                 <div class="container">
-                    <a href="#"><div><i class="fab fa-2x fa-linkedin-in"></i></div></a>
-                    <a href="https://subsplease.org/"><div><i class="fab fa-2x fa-instagram"></i></div></a>
-                    <a href="https://subsplease.org/"><div><i class="fab fa-2x fa-facebook-f"></i></div></a>
-                    <a href="https://subsplease.org/"><div><i class="fab fa-2x fa-twitter"></i></div></a>
+                    <a href="#"><i class="fab fa-2x fa-linkedin-in"></i></a>
+                    <a href="https://subsplease.org/"><i class="fab fa-2x fa-instagram"></i></a>
+                    <a href="https://subsplease.org/"><i class="fab fa-2x fa-facebook-f"></i></a>
+                    <a href="https://subsplease.org/"><<i class="fab fa-2x fa-twitter"></i></a>
                 </div>
             </div>
-            <div class="second-container">
-                <div class="self-container">
+                <div class="second-container">
                     <img src="assets/images/weed.JPG" alt="smokeweed"/>
-                    <div class="text">
-                        <h2>Farid AF</h2>
-                        <h3>Fullstack Dev</h3>
-                    </div>
+                        <p id="nama">Farid AF</p>
+                        <p id="decs">Fullstack Dev</p>
                 </div>
-            </div>
-        </div>
-      </section>
-    </body>
+
+    </section>
+</div>
+<script src="assets/js/nav.js"></script>
+</body>
 </html>
